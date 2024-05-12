@@ -343,9 +343,10 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
-"Assets/GridInteract.cs"
-"Assets/InventoryController.cs"
-"Assets/ItemGrid.cs"
+"Assets/Scripts/GridInteract.cs"
+"Assets/Scripts/InventoryController.cs"
+"Assets/Scripts/InventoryItem.cs"
+"Assets/Scripts/ItemGrid.cs"
 -langversion:9.0
 
 /deterministic
