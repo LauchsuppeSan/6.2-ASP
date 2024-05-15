@@ -346,6 +346,7 @@
 "Assets/Scripts/GridInteract.cs"
 "Assets/Scripts/InventoryController.cs"
 "Assets/Scripts/InventoryItem.cs"
+"Assets/Scripts/ItemData.cs"
 "Assets/Scripts/ItemGrid.cs"
 -langversion:9.0
 
