@@ -2,17 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemData : MonoBehaviour
+[CreateAssetMenu]
+public class ItemData : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int width = 1;
+    public int height = 1;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public Sprite itemIcon;
 }

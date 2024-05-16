@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class ItemGrid : MonoBehaviour
 {
-    const float tileSizeWidth = 32;
-    const float tileSizeHeight = 32;
+    public const float tileSizeWidth = 32;
+    public const float tileSizeHeight = 32;
 
     InventoryItem[,] inventoryItemSlot;
 
@@ -15,15 +15,10 @@ public class ItemGrid : MonoBehaviour
     [SerializeField] int gridSizeWidth;
     [SerializeField] int gridSizeHeight;
 
-    [SerializeField] GameObject inventoryItemPrefab;
-
     private void Start()
     {
         rectTransform = GetComponent<RectTransform>();
         Init(gridSizeWidth, gridSizeHeight);
-
-        InventoryItem inventoryItem = Instantiate(inventoryItemPrefab).GetComponent<InventoryItem>();
-        PlaceItem(inventoryItem, 1, 1);
     }
 
     private void Init(int width, int height)
@@ -41,8 +36,8 @@ public class ItemGrid : MonoBehaviour
         positionOnTheGrid.x = mousePosition.x - rectTransform.position.x;
         positionOnTheGrid.y = rectTransform.position.y - mousePosition.y;
 
-        tileGridPosition.x = (int) (positionOnTheGrid.x / tileSizeWidth);
-        tileGridPosition.y = (int) (positionOnTheGrid.y / tileSizeHeight);
+        tileGridPosition.x = (int)(positionOnTheGrid.x / tileSizeWidth);
+        tileGridPosition.y = (int)(positionOnTheGrid.y / tileSizeHeight);
 
         return tileGridPosition;
     }
@@ -51,19 +46,39 @@ public class ItemGrid : MonoBehaviour
     {
         RectTransform rectTransform = inventoryItem.GetComponent<RectTransform>();
         rectTransform.SetParent(this.rectTransform);
-        inventoryItemSlot[posX, posY] = inventoryItem;
+
+        for (int x = 0; x < inventoryItem.itemData.width; x++)
+        {
+            for (int y = 0; y < inventoryItem.itemData.height; y++)
+            {
+                inventoryItemSlot[posX + x, posY + y] = inventoryItem;
+            }
+        }
+
+        inventoryItem.onGridPositionX = posX;
+        inventoryItem.onGridPositionY = posY;
 
         Vector2 position = new Vector2();
-        position.x = posX * tileSizeWidth + tileSizeWidth / 2;
-        position.y = -(posY * tileSizeHeight + tileSizeHeight / 2);
+        position.x = posX * tileSizeWidth + tileSizeWidth * inventoryItem.itemData.width / 2;
+        position.y = -(posY * tileSizeHeight + tileSizeHeight * inventoryItem.itemData.height / 2);
 
         rectTransform.localPosition = position;
     }
 
     public InventoryItem PickUpItem(int x, int y)
     {
-       InventoryItem toReturn = inventoryItemSlot[x, y];
-        inventoryItemSlot[x, y] = null;
+        InventoryItem toReturn = inventoryItemSlot[x, y];
+
+        if (toReturn == null) { return null; }
+
+        for (int ix = 0; ix < toReturn.itemData.width; ix++)
+        {
+            for (int iy = 0; iy < toReturn.itemData.height; iy++)
+            {
+                inventoryItemSlot[toReturn.onGridPositionX + ix, toReturn.onGridPositionY + iy] = null;
+            }
+        }
+
         return toReturn;
     }
 }
