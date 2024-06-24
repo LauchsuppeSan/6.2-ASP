@@ -345,6 +345,7 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/Scripts/GridInteract.cs"
 "Assets/Scripts/InventoryController.cs"
+"Assets/Scripts/InventoryHighlight.cs"
 "Assets/Scripts/InventoryItem.cs"
 "Assets/Scripts/ItemData.cs"
 "Assets/Scripts/ItemGrid.cs"
