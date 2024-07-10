@@ -1,0 +1,332 @@
+Using pre-set license
+Built from '2021.3/staging' branch; Version is '2021.3.33f1 (ee5a2aa03ab2) revision 15620650'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 11  (10.0.22631) 64bit Core' Language: 'en' Physical Memory: 15790 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2021.3.33f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker2
+-projectPath
+C:/Users/guili/Desktop/6.2-ASP/6.2 ASP
+-logFile
+Logs/AssetImportWorker2.log
+-srvPort
+52430
+Successfully changed project path to: C:/Users/guili/Desktop/6.2-ASP/6.2 ASP
+C:/Users/guili/Desktop/6.2-ASP/6.2 ASP
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [36988] Host "[IP] 192.168.0.59 [Port] 0 [Flags] 2 [Guid] 4047845606 [EditorId] 4047845606 [Version] 1048832 [Id] WindowsEditor(7,LAPTOP-B7O95NMC) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [36988] Host "[IP] 192.168.0.59 [Port] 0 [Flags] 2 [Guid] 4047845606 [EditorId] 4047845606 [Version] 1048832 [Id] WindowsEditor(7,LAPTOP-B7O95NMC) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+[Physics::Module] Initialized MultithreadedJobDispatcher with {0} workers.
+Refreshing native plugins compatible for Editor in 107.30 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2021.3.33f1 (ee5a2aa03ab2)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.33f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/guili/Desktop/6.2-ASP/6.2 ASP/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3060 Laptop GPU (ID=0x2520)
+    Vendor:   NVIDIA
+    VRAM:     6010 MB
+    Driver:   31.0.15.4617
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.33f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.33f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.33f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56348
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.33f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.007222 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 96.32 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.506 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1506ms)
+		BeginReloadAssembly (185ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (972ms)
+			LoadAssemblies (180ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (427ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (42ms)
+			SetupLoadedEditorAssemblies (441ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (12ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (96ms)
+				BeforeProcessingInitializeOnLoad (2ms)
+				ProcessInitializeOnLoadAttributes (250ms)
+				ProcessInitializeOnLoadMethodAttributes (80ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.009101 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.67 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Package Manager log level set to [2]
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Completed reload, in  1.977 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1978ms)
+		BeginReloadAssembly (194ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (10ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (29ms)
+		EndReloadAssembly (1643ms)
+			LoadAssemblies (141ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (515ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (69ms)
+			SetupLoadedEditorAssemblies (900ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (7ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (113ms)
+				ProcessInitializeOnLoadAttributes (734ms)
+				ProcessInitializeOnLoadMethodAttributes (32ms)
+				AfterProcessingInitializeOnLoad (12ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (10ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.18 seconds
+Refreshing native plugins compatible for Editor in 1.44 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3086 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 23 unused Assets / (46.8 KB). Loaded Objects now: 3547.
+Memory consumption went from 110.5 MB to 110.4 MB.
+Total: 4.618600 ms (FindLiveObjects: 0.366000 ms CreateObjectMapping: 0.186000 ms MarkObjects: 3.927300 ms  DeleteObjects: 0.138100 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:CustomObjectIndexerAttribute: bc11b3a6c3213fcdd17b65e7da85e133 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 2210134.602674 seconds.
+  path: Assets/RPG Item Icons/Weapon_Armor.png
+  artifactKey: Guid(e67051dce2141b448a47e3eb495f7971) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RPG Item Icons/Weapon_Armor.png using Guid(e67051dce2141b448a47e3eb495f7971) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '597f7881735b7ba4c8849ea25d53bacd') in 0.294976 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 6.954960 seconds.
+  path: Assets/RPG Item Icons/Weapons
+  artifactKey: Guid(960ba49ac8603a4438052bd5bc6ccb00) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RPG Item Icons/Weapons using Guid(960ba49ac8603a4438052bd5bc6ccb00) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '40de8a6dfdaeebed94ee72f17e629b5e') in 0.012141 seconds 
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 8.233197 seconds.
+  path: Assets/RPG Item Icons/Armor
+  artifactKey: Guid(3c053b1e7b80de24eaef97853a6be888) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RPG Item Icons/Armor using Guid(3c053b1e7b80de24eaef97853a6be888) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fe6206e74f9e3cf79f664de7b418b46d') in 0.013584 seconds 
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.002318 seconds.
+  path: Assets/RPG Item Icons/Armor/Helmet_1.png
+  artifactKey: Guid(524be1d22e72b084b984b429febbf26b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RPG Item Icons/Armor/Helmet_1.png using Guid(524be1d22e72b084b984b429febbf26b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1eedce20af71dbea0a0e11f5edae605f') in 0.045561 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 3.751828 seconds.
+  path: Assets/RPG Item Icons/Beverages
+  artifactKey: Guid(4ce40375eaae91246bed807b1725369f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RPG Item Icons/Beverages using Guid(4ce40375eaae91246bed807b1725369f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b0eb433a2399893f6c035a256ef52fba') in 0.012768 seconds 
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.002371 seconds.
+  path: Assets/RPG Item Icons/Beverages/Wine_and_Meat.png
+  artifactKey: Guid(8a048c64900ed364793f8793d5f2d488) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RPG Item Icons/Beverages/Wine_and_Meat.png using Guid(8a048c64900ed364793f8793d5f2d488) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fc5ad874682dd781dd08003a56b1ad63') in 0.046398 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/RPG Item Icons/Beverages/Wine_Caraffe1.png
+  artifactKey: Guid(6a820574790e50e478c67004a6d34f67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RPG Item Icons/Beverages/Wine_Caraffe1.png using Guid(6a820574790e50e478c67004a6d34f67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6280bee72fb42db2474e221f698e0028') in 0.034816 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 4.390007 seconds.
+  path: Assets/RPG Item Icons/Ingredients
+  artifactKey: Guid(3cd15cd143a8e144a8cd43adf3c5edae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RPG Item Icons/Ingredients using Guid(3cd15cd143a8e144a8cd43adf3c5edae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0d48535df7d29650ab5153fce8a11581') in 0.017860 seconds 
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.000065 seconds.
+  path: Assets/RPG Item Icons/Ingredients/Mushroom_2.png
+  artifactKey: Guid(a7ef6214940772c4b9fc6cf89051472b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RPG Item Icons/Ingredients/Mushroom_2.png using Guid(a7ef6214940772c4b9fc6cf89051472b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2299df36db0c223fec2184324fc9e793') in 0.057476 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 3.533313 seconds.
+  path: Assets/RPG Item Icons/Ressources
+  artifactKey: Guid(38a8bdd24da2e7b43924f63ad218e889) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RPG Item Icons/Ressources using Guid(38a8bdd24da2e7b43924f63ad218e889) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '66dbc5bd5f0a7ba53cb5296f558806d0') in 0.015462 seconds 
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/RPG Item Icons/Ressources/Feathers.png
+  artifactKey: Guid(980e145e7d6867f4eaaa70e90d0e928d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RPG Item Icons/Ressources/Feathers.png using Guid(980e145e7d6867f4eaaa70e90d0e928d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd01bbd63be8db268a4dadc54ca8e49de') in 0.047135 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000096 seconds.
+  path: Assets/RPG Item Icons/Ressources/Wood_Pile_2.png
+  artifactKey: Guid(135e51fc213cf344da679159703bcb13) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RPG Item Icons/Ressources/Wood_Pile_2.png using Guid(135e51fc213cf344da679159703bcb13) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2aa602ddeeaf16f2889d5546ad0fdfc9') in 0.050532 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 93.914804 seconds.
+  path: Assets/RPG Item Icons/Food
+  artifactKey: Guid(3ad61c27ec795784fb1696d0479de1e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RPG Item Icons/Food using Guid(3ad61c27ec795784fb1696d0479de1e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '364dafc7f8f986f1d5aa935d0dc75952') in 0.014878 seconds 
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.001538 seconds.
+  path: Assets/RPG Item Icons/Food/Bean_soup.png
+  artifactKey: Guid(ecb069ab6dcf4e2478951cba62e2dc42) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RPG Item Icons/Food/Bean_soup.png using Guid(ecb069ab6dcf4e2478951cba62e2dc42) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '596b52a82cb64cea0a09833e39a4f3f1') in 0.123467 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000513 seconds.
+  path: Assets/RPG Item Icons/Food/Cracker_Bowl2.png
+  artifactKey: Guid(dc210fb96b0ab11468a6a99309cf5f55) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RPG Item Icons/Food/Cracker_Bowl2.png using Guid(dc210fb96b0ab11468a6a99309cf5f55) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '891dac49f4011585f09b4bc66c95c203') in 0.081791 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/RPG Item Icons/Food/Cheese_Bites.png
+  artifactKey: Guid(9dacf3b33309a2e4fb5c6d9becc8a9ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RPG Item Icons/Food/Cheese_Bites.png using Guid(9dacf3b33309a2e4fb5c6d9becc8a9ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3f60e0dfad8f6df06b15450168e2adc8') in 0.050484 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/RPG Item Icons/Food/Cheese_Plate.png
+  artifactKey: Guid(787bed3fb068f3b4f9965cfb04d4248a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RPG Item Icons/Food/Cheese_Plate.png using Guid(787bed3fb068f3b4f9965cfb04d4248a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6d4de6984594418042056c06dc7375d1') in 0.045076 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/RPG Item Icons/Food/Chili_Bowl.png
+  artifactKey: Guid(4e91672c0a9122944b236cf1fa7a1e84) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RPG Item Icons/Food/Chili_Bowl.png using Guid(4e91672c0a9122944b236cf1fa7a1e84) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '40764f61c42612b3d1d417781a33f197') in 0.036672 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/RPG Item Icons/Food/Potato_Fish_Bowl.png
+  artifactKey: Guid(37b8fb50df5c6e4409ad404c1b8b33a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RPG Item Icons/Food/Potato_Fish_Bowl.png using Guid(37b8fb50df5c6e4409ad404c1b8b33a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a4832f73876d783d1e1f5b8a4365ebc3') in 0.038119 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/RPG Item Icons/Food/Butter_Pieces.png
+  artifactKey: Guid(00fcf4dcd982953408c1577d8e2efc86) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RPG Item Icons/Food/Butter_Pieces.png using Guid(00fcf4dcd982953408c1577d8e2efc86) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '06c2e6809d850bfd0b7bbe4305b7cc03') in 0.034915 seconds 
+Number of asset objects unloaded after import = 3
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0

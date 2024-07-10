@@ -1,10 +1,15 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class ItemGrid : MonoBehaviour
 {
     public const float tileSizeWidth = 32;
     public const float tileSizeHeight = 32;
+
+    private bool GridChanged = false;
 
     InventoryItem[,] inventoryItemSlot;
 
@@ -12,16 +17,52 @@ public class ItemGrid : MonoBehaviour
 
     [SerializeField] int gridSizeWidth;
     [SerializeField] int gridSizeHeight;
+    public TMP_InputField widthInput;
+    public TMP_InputField heightInput;
 
+    InventoryHighlight inventoryHighlight;
     private void Start()
     {
         rectTransform = GetComponent<RectTransform>();
+        widthInput = GameObject.Find("IF Width").GetComponent<TMP_InputField>();
+        heightInput = GameObject.Find("IF Height").GetComponent<TMP_InputField>();
+        inventoryHighlight = GetComponent<InventoryHighlight>();
+        
         Init(gridSizeWidth, gridSizeHeight);
     }
+    private void Update()
+    {
+        if (GridChanged)
+        {
+            InitChanged(gridSizeWidth, gridSizeHeight);
+            rectTransform = GetComponent<RectTransform>();
+            GridChanged = false;
+        }
+        Debug.Log(widthInput.text);
+    }
 
+    public void ReadUserInputWidth(string input)
+    {
+        if (Convert.ToInt32(input) <= 25 && Convert.ToInt32(input) >= 2) gridSizeWidth = Convert.ToInt32(input);
+        else if (Convert.ToInt32(input) > 25 || Convert.ToInt32(input) < 2) widthInput.text = gridSizeWidth.ToString();
+
+        GridChanged = true;
+    }
+    public void ReadUserInputHeight(string input)
+    {
+        if (Convert.ToInt32(input) <= 11 && Convert.ToInt32(input) >= 2) gridSizeHeight = Convert.ToInt32(input);
+        else if (Convert.ToInt32(input) > 11 || Convert.ToInt32(input) < 2) heightInput.text = gridSizeHeight.ToString();
+
+        GridChanged = true;
+    }
     private void Init(int width, int height)
     {
         inventoryItemSlot = new InventoryItem[width, height];
+        Vector2 size = new Vector2(width * tileSizeWidth, height * tileSizeHeight);
+        rectTransform.sizeDelta = size;
+    }
+    private void InitChanged(int width, int height)
+    {
         Vector2 size = new Vector2(width * tileSizeWidth, height * tileSizeHeight);
         rectTransform.sizeDelta = size;
     }
@@ -53,6 +94,7 @@ public class ItemGrid : MonoBehaviour
             return false;
         }
 
+        ///wird im leftbuttonclick ausgeführt///
         if (overlapItem != null)
         {
             CleanGridReference(overlapItem);
@@ -90,7 +132,15 @@ public class ItemGrid : MonoBehaviour
         position.y = -(posY * tileSizeHeight + tileSizeHeight * inventoryItem.HEIGHT / 2);
         return position;
     }
-
+/// <summary>
+/// bla
+/// </summary>
+/// <param name="posX"></param>
+/// <param name="posY"></param>
+/// <param name="width">item width</param>
+/// <param name="height">item height</param>
+/// <param name="overlapItem"></param>
+/// <returns></returns>
     private bool OverlapCheck(int posX, int posY, int width, int height, ref InventoryItem overlapItem)
     {
         for (int x = 0; x < width; x++)
@@ -99,6 +149,7 @@ public class ItemGrid : MonoBehaviour
             {
                 if (inventoryItemSlot[posX + x, posY + y] != null)
                 {
+
                     if (overlapItem == null)
                     {
                         overlapItem = inventoryItemSlot[posX + x, posY + y];
@@ -112,27 +163,7 @@ public class ItemGrid : MonoBehaviour
         }
         return true;
     }
-    //private bool OverlapCheck(int posX, int posY, int width, int height, ref InventoryItem overlapItem)
-    //{
-    //    for (int x = 0; x < width; x++)
-    //    {
-    //        for (int y = 0; y < height; y++)
-    //        {
-    //            if (inventoryItemSlot[posX + x, posY + y] != null)
-    //            {
-    //                if (overlapItem == null)
-    //                {
-    //                    overlapItem = inventoryItemSlot[posX + x, posY + y];
-    //                }
-    //                else
-    //                {
-    //                    if (overlapItem != inventoryItemSlot[posX + x, posY + y]) return false;
-    //                }
-    //            }
-    //        }
-    //    }
-    //    return true;
-    //}
+    
     private bool CheckAvailableSpace(int posX, int posY, int width, int height)
     {
         for (int x = 0; x < width; x++)
@@ -141,6 +172,7 @@ public class ItemGrid : MonoBehaviour
             {
                 if (inventoryItemSlot[posX + x, posY + y] != null)
                 {
+                    //inventoryHighlight.SetColor(Color.red)    DAS NICHT MACHEN;
                     return false;
                 }
             }

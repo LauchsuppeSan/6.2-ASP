@@ -1,14 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryHighlight : MonoBehaviour
 {
     [SerializeField] RectTransform highlighter;
 
-    public void Show(bool b)
+    private void Start()
+    {
+        //highlighter = GameObject.Find("Highlighter").GetComponent<Image>();
+    }
+    public void Show(bool b, Color color)
     {
         highlighter.gameObject.SetActive(b);
+        highlighter.GetComponent<Image>().color = color;
     }
     public void SetSize(InventoryItem targetItem)
     {
@@ -20,8 +26,6 @@ public class InventoryHighlight : MonoBehaviour
 
     public void SetPosition(ItemGrid targetGrid, InventoryItem targetItem)
     {
-        //SetParent(targetGrid);
-
         Vector2 pos = targetGrid.CalculatePositionOnGrid(targetItem, targetItem.onGridPositionX, targetItem.onGridPositionY);
 
         highlighter.localPosition = pos;
@@ -38,5 +42,10 @@ public class InventoryHighlight : MonoBehaviour
         Vector2 pos = targetGrid.CalculatePositionOnGrid(targetItem, posX, posY);
 
         highlighter.localPosition = pos;
+    }
+
+    public void SetColor(Color color)
+    {
+        highlighter.GetComponent<Image>().color = color;
     }
 }
