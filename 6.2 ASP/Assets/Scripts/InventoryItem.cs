@@ -3,20 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
-public class InventoryItem : MonoBehaviour, IPointerExitHandler
+public class InventoryItem : MonoBehaviour
 {
     public ItemData itemData;
-
-    Image itemImage;
-
-    InventoryHighlight highlight;
-
-    private void Start()
-    {
-        itemImage = GetComponent<Image>();
-    }
 
     public int HEIGHT
     {
@@ -47,10 +37,6 @@ public class InventoryItem : MonoBehaviour, IPointerExitHandler
 
     public bool rotated = false;
 
-    private void Update()
-    {
-
-    }
     internal void Rotate()
     {
         rotated = !rotated;
@@ -69,30 +55,5 @@ public class InventoryItem : MonoBehaviour, IPointerExitHandler
         size.x = itemData.width * ItemGrid.tileSizeWidth;
         size.y = itemData.height * ItemGrid.tileSizeHeight;
         GetComponent<RectTransform>().sizeDelta = size;
-    }
-
-    public void SetRaycastTarget(bool rayOn)
-    {
-        if (rayOn)
-        {
-             itemImage.raycastTarget = true;
-            Debug.Log("ello");
-        }
-        else if (!rayOn)
-        {
-            itemImage.raycastTarget = false;
-        }
-    }
-
-    private void OnPointerExit()
-    {
-        highlight.SetColor(Color.white);
-        Debug.Log("huh");
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        highlight.SetColor(Color.red);
-        Debug.Log("workkk");
     }
 }

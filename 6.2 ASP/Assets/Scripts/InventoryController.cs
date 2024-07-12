@@ -8,7 +8,7 @@ public class InventoryController : MonoBehaviour
     [HideInInspector]
     private ItemGrid selectedItemGrid;
 
-    InventoryItem selectedItem; //currently held item
+    InventoryItem selectedItem;
     InventoryItem overlapItem;
     InventoryItem itemToHighlight;
     RectTransform rectTransform;
@@ -18,9 +18,8 @@ public class InventoryController : MonoBehaviour
     [SerializeField] Transform canvasTransform;
 
     InventoryHighlight inventoryHighlight;
-    InventoryItem inventoryItem;
 
-    Vector2Int oldPosition;
+    Vector2Int oldPosition; 
 
     public ItemGrid SelectedItemGrid
     {
@@ -45,7 +44,7 @@ public class InventoryController : MonoBehaviour
         {
             CreateRandomItem();
         }
-
+        
         if (Input.GetKeyDown(KeyCode.W))
         {
             InsertRandomItem();
@@ -58,7 +57,7 @@ public class InventoryController : MonoBehaviour
 
         if (selectedItemGrid == null)
         {
-            inventoryHighlight.Show(false, Color.white);
+            inventoryHighlight.Show(false);
             return;
         }
 
@@ -111,27 +110,20 @@ public class InventoryController : MonoBehaviour
 
             if (itemToHighlight != null)
             {
-                inventoryHighlight.Show(true, Color.cyan);
+                inventoryHighlight.Show(true);
                 inventoryHighlight.SetSize(itemToHighlight);
                 inventoryHighlight.SetPosition(selectedItemGrid, itemToHighlight);
             }
             else
             {
-                inventoryHighlight.Show(false, Color.white);
+                inventoryHighlight.Show(false);
             }
         }
         else
         {
+            inventoryHighlight.Show(selectedItemGrid.BoundaryCheck(positionOnGrid.x, positionOnGrid.y, selectedItem.WIDTH, selectedItem.HEIGHT));
             inventoryHighlight.SetSize(selectedItem);
             inventoryHighlight.SetPosition(selectedItemGrid, selectedItem, positionOnGrid.x, positionOnGrid.y);
-            if (overlapItem != null)
-            {
-                inventoryHighlight.Show(selectedItemGrid.BoundaryCheck(positionOnGrid.x, positionOnGrid.y, selectedItem.WIDTH, selectedItem.HEIGHT), Color.red);
-            }
-            else if (overlapItem == null)
-            {
-                inventoryHighlight.Show(selectedItemGrid.BoundaryCheck(positionOnGrid.x, positionOnGrid.y, selectedItem.WIDTH, selectedItem.HEIGHT), Color.green);
-            }
         }
     }
 
@@ -171,7 +163,6 @@ public class InventoryController : MonoBehaviour
         {
             position.x -= (selectedItem.WIDTH - 1) * ItemGrid.tileSizeWidth / 2;
             position.y += (selectedItem.HEIGHT - 1) * ItemGrid.tileSizeHeight / 2;
-            return selectedItemGrid.GetTileGridPosition(position);
         }
 
         return selectedItemGrid.GetTileGridPosition(position);
@@ -190,7 +181,6 @@ public class InventoryController : MonoBehaviour
                 overlapItem = null;
                 rectTransform = selectedItem.GetComponent<RectTransform>();
                 rectTransform.SetAsLastSibling();
-                inventoryItem.SetRaycastTarget(true);
             }
         }
     }
