@@ -18,6 +18,11 @@ public class InventoryHighlight : MonoBehaviour
         highlighter.sizeDelta = size;
     }
 
+    /// <summary>
+    /// Sets position for highlight
+    /// </summary>
+    /// <param name="targetGrid"></param>
+    /// <param name="targetItem"></param>
     public void SetPosition(ItemGrid targetGrid, InventoryItem targetItem)
     {
         //SetParent(targetGrid);
@@ -27,6 +32,10 @@ public class InventoryHighlight : MonoBehaviour
         highlighter.localPosition = pos;
     }
 
+    /// <summary>
+    /// Sets parent
+    /// </summary>
+    /// <param name="targetGrid"></param>
     public void SetParent(ItemGrid targetGrid)
     {
         if (targetGrid == null) { return; }

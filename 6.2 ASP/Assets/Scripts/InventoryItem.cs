@@ -32,7 +32,7 @@ public class InventoryItem : MonoBehaviour
         }
     }
 
-    public int onGridPositionX;
+    public int onGridPositionX; //used to cycle through the grid
     public int onGridPositionY;
 
     public bool rotated = false;
@@ -52,7 +52,7 @@ public class InventoryItem : MonoBehaviour
         GetComponent<Image>().sprite = itemData.itemIcon;
 
         Vector2 size = new Vector2();
-        size.x = itemData.width * ItemGrid.tileSizeWidth;
+        size.x = itemData.width * ItemGrid.tileSizeWidth; //Calculates size of item based on the tile size
         size.y = itemData.height * ItemGrid.tileSizeHeight;
         GetComponent<RectTransform>().sizeDelta = size;
     }

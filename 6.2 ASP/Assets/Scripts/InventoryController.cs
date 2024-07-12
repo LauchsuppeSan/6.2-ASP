@@ -6,7 +6,7 @@ using UnityEngine;
 public class InventoryController : MonoBehaviour
 {
     [HideInInspector]
-    private ItemGrid selectedItemGrid;
+    private ItemGrid selectedItemGrid; //public
 
     InventoryItem selectedItem;
     InventoryItem overlapItem;
@@ -38,6 +38,8 @@ public class InventoryController : MonoBehaviour
 
     private void Update()
     {
+        //Debug.Log(selectedItemGrid.GetTileGridPosition(Input.mousePosition));
+
         ItemIconDrag();
 
         if (Input.GetKeyDown(KeyCode.Q))
@@ -95,12 +97,14 @@ public class InventoryController : MonoBehaviour
         selectedItemGrid.PlaceItem(itemToInsert, posOnGrid.Value.x, posOnGrid.Value.y);
     }
 
+    /// <summary>
+    /// Handles highlight
+    /// </summary>
     private void HandleHighlight()
     {
         Vector2Int positionOnGrid = GetTileGridPosition();
 
         if (oldPosition == positionOnGrid) return;
-
 
         oldPosition = positionOnGrid;
 
@@ -112,6 +116,7 @@ public class InventoryController : MonoBehaviour
             {
                 inventoryHighlight.Show(true);
                 inventoryHighlight.SetSize(itemToHighlight);
+                //inventoryHighlight.SetParent(selectedItemGrid);
                 inventoryHighlight.SetPosition(selectedItemGrid, itemToHighlight);
             }
             else
@@ -123,26 +128,33 @@ public class InventoryController : MonoBehaviour
         {
             inventoryHighlight.Show(selectedItemGrid.BoundaryCheck(positionOnGrid.x, positionOnGrid.y, selectedItem.WIDTH, selectedItem.HEIGHT));
             inventoryHighlight.SetSize(selectedItem);
+            //inventoryHighlight.SetParent(selectedItemGrid);
             inventoryHighlight.SetPosition(selectedItemGrid, selectedItem, positionOnGrid.x, positionOnGrid.y);
         }
     }
 
+    /// <summary>
+    /// Creates a random item
+    /// </summary>
     private void CreateRandomItem()
     {
         InventoryItem inventoryItem = Instantiate(itemPrefab).GetComponent<InventoryItem>();
-        selectedItem = inventoryItem;
+        selectedItem = inventoryItem; //newly created item being set as currently held
 
         rectTransform = inventoryItem.GetComponent<RectTransform>();
         rectTransform.SetParent(canvasTransform);
         rectTransform.SetAsLastSibling();
 
-        int selectedItemID = UnityEngine.Random.Range(0, items.Count);
+        int selectedItemID = UnityEngine.Random.Range(0, items.Count); //selects random item out of item list
         inventoryItem.Set(items[selectedItemID]);
     }
 
+    /// <summary>
+    /// What happens when the left mouse button is pressed on the grid
+    /// </summary>
     private void LeftMouseButtonPress()
     {
-        Debug.Log(selectedItemGrid.GetTileGridPosition(Input.mousePosition));
+        //Debug.Log(selectedItemGrid.GetTileGridPosition(Input.mousePosition));
         Vector2Int tileGridPosition = GetTileGridPosition();
 
         if (selectedItem == null)
@@ -168,17 +180,22 @@ public class InventoryController : MonoBehaviour
         return selectedItemGrid.GetTileGridPosition(position);
     }
 
+    /// <summary>
+    /// checks for an overlapitem, assignes it and nullyfies it
+    /// </summary>
+    /// <param name="tileGridPosition"></param>
     private void PlaceItem(Vector2Int tileGridPosition)
     {
-        bool complete = selectedItemGrid.PlaceItem(selectedItem, tileGridPosition.x, tileGridPosition.y, ref overlapItem);
+        bool complete = selectedItemGrid.PlaceItem(selectedItem, tileGridPosition.x, tileGridPosition.y, ref overlapItem); //checks if item can be placed
 
-        if (complete)
+        if (complete) //if item can be placed
         {
-            selectedItem = null;
-            if (overlapItem != null)
+            selectedItem = null; //item currently held is null
+
+            if (overlapItem != null) //if there is an overlapitem
             {
-                selectedItem = overlapItem;
-                overlapItem = null;
+                selectedItem = overlapItem; //makes the overlapitem currently held item
+                overlapItem = null; //overlapitem is null
                 rectTransform = selectedItem.GetComponent<RectTransform>();
                 rectTransform.SetAsLastSibling();
             }
@@ -194,6 +211,9 @@ public class InventoryController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Drags the icon/sprite of the currently held item
+    /// </summary>
     private void ItemIconDrag()
     {
         if (selectedItem != null)
