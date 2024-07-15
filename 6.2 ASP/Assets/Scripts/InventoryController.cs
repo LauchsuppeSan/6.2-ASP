@@ -19,7 +19,7 @@ public class InventoryController : MonoBehaviour
 
     InventoryHighlight inventoryHighlight;
 
-    Vector2Int oldPosition; 
+    Vector2Int oldPosition;
 
     public ItemGrid SelectedItemGrid
     {
@@ -46,7 +46,7 @@ public class InventoryController : MonoBehaviour
         {
             CreateRandomItem();
         }
-        
+
         if (Input.GetKeyDown(KeyCode.W))
         {
             InsertRandomItem();
@@ -188,6 +188,12 @@ public class InventoryController : MonoBehaviour
     {
         bool complete = selectedItemGrid.PlaceItem(selectedItem, tileGridPosition.x, tileGridPosition.y, ref overlapItem); //checks if item can be placed
 
+        Debug.Log("complete " + complete);
+
+        if (!complete)
+        {
+            Debug.Log("youre a tad closer");
+        }
         if (complete) //if item can be placed
         {
             selectedItem = null; //item currently held is null
@@ -200,6 +206,7 @@ public class InventoryController : MonoBehaviour
                 rectTransform.SetAsLastSibling();
             }
         }
+
     }
 
     private void PickUpItem(Vector2Int tileGridPosition)

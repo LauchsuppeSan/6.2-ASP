@@ -26,9 +26,17 @@ public class ItemGrid : MonoBehaviour
 
     public void ChangeGridWidth(string input)
     {
-        if (Convert.ToInt32(input) <= 23 && Convert.ToInt32(input) >= 2)
+        if (Convert.ToInt32(input) <= 30 && Convert.ToInt32(input) >= 2)
         {
             gridSizeWidth = Convert.ToInt32(input);
+            InitChanged(gridSizeWidth, gridSizeHeight);
+        }
+    }
+    public void ChangeGridHeight(string input)
+    {
+        if (Convert.ToInt32(input) <= 17 && Convert.ToInt32(input) >= 2)
+        {
+            gridSizeHeight = Convert.ToInt32(input);
             InitChanged(gridSizeWidth, gridSizeHeight);
         }
     }
@@ -52,7 +60,17 @@ public class ItemGrid : MonoBehaviour
     /// <param name="height">new grid height</param>
     private void InitChanged(int width, int height)
     {
-        //inventoryItemSlot = new InventoryItem[width, height];
+        InventoryItem[,] tempItems = inventoryItemSlot;
+
+
+        if (tempItems.GetLength(1) > height || tempItems.GetLength(0) > width)
+        {
+            Debug.Log("FUCK YEAH!");
+            return;
+        }
+
+        inventoryItemSlot = new InventoryItem[width, height];
+        Array.Copy(tempItems, 0, inventoryItemSlot, 0, tempItems.Length);
         Vector2 size = new Vector2(width * tileSizeWidth, height * tileSizeHeight);
         rectTransform.sizeDelta = size;
     }
@@ -78,15 +96,28 @@ public class ItemGrid : MonoBehaviour
 
     public bool PlaceItem(InventoryItem inventoryItem, int posX, int posY, ref InventoryItem overlapItem)
     {
-        if (BoundaryCheck(posX, posY, inventoryItem.WIDTH, inventoryItem.HEIGHT) == false)
+        if (BoundaryCheck(posX, posY, inventoryItem.WIDTH, inventoryItem.HEIGHT) == false) //Boundary check is true
         {
+            Debug.Log("Place item FALSE");
             return false;
         }
+        // if (BoundaryCheck(posX, posY, inventoryItem.WIDTH, inventoryItem.HEIGHT) == true)
+        //{
+        //    Debug.Log("Boundary check TRUE");
+
+        //}
 
         if (OverlapCheck(posX, posY, inventoryItem.WIDTH, inventoryItem.HEIGHT, ref overlapItem) == false)
         {
+            Debug.Log("place item FALSE");
             overlapItem = null;
+
             return false;
+        }
+        if (OverlapCheck(posX, posY, inventoryItem.WIDTH, inventoryItem.HEIGHT, ref overlapItem) == true)
+        {
+            Debug.Log("Overlap check TRUE");
+
         }
 
         if (overlapItem != null)
@@ -96,6 +127,7 @@ public class ItemGrid : MonoBehaviour
 
         PlaceItem(inventoryItem, posX, posY);
 
+        Debug.Log("Place Item TRUE");
         return true;
     }
 
@@ -157,20 +189,30 @@ public class ItemGrid : MonoBehaviour
             {
                 if (inventoryItemSlot[posX + x, posY + y] != null)
                 {
+                    Debug.Log("it aint null");
                     if (overlapItem == null)
                     {
                         overlapItem = inventoryItemSlot[posX + x, posY + y]; //Overlapitem has been assigned to the item we are overlapping with
+                        Debug.Log("Overlap TRUE");
                     }
-                    else
+                    else if (overlapItem != inventoryItemSlot[posX + x, posY + y])
                     {
-                        if (overlapItem != inventoryItemSlot[posX + x, posY + y]) return false; //There is 2 items we are overlapping with so we cant place the item
+                        Debug.Log("Overlap FALSE");
+
+                        return false; //There is 2 items we are overlapping with so we cant place the item
                     }
+                }
+                else if (inventoryItemSlot[posX + x, posY + y] == null)
+                {
+                    Debug.Log("It do be null");
                 }
             }
         }
+        Debug.Log("Nothing to overlap with");
+
         return true;
     }
-    
+
     /// <summary>
     /// Checks grid for available space
     /// </summary>
@@ -187,10 +229,13 @@ public class ItemGrid : MonoBehaviour
             {
                 if (inventoryItemSlot[posX + x, posY + y] != null)
                 {
+                    Debug.Log("Check available space FALSE");
                     return false;
                 }
             }
         }
+        Debug.Log("Check available space TRUE");
+
         return true;
     }
 
@@ -234,9 +279,20 @@ public class ItemGrid : MonoBehaviour
     /// <returns></returns>
     bool PositionCheck(int posX, int posY)
     {
-        if (posX < 0 || posY < 0) return false; //outside the boundary
+        if (posX < 0 || posY < 0)
+        {
+            //Debug.Log("Position check FALSE");
+            return false; //outside the boundary
+        }
 
-        if (posX >= gridSizeWidth || posY >= gridSizeHeight) return false; //outside the boundary
+        if (posX >= gridSizeWidth || posY >= gridSizeHeight)
+        {
+            //Debug.Log("Position check FALSE");
+
+            return false; //outside the boundary
+        }
+
+        //Debug.Log("Position check TRUE");
 
         return true;
     }
@@ -251,12 +307,23 @@ public class ItemGrid : MonoBehaviour
     /// <returns></returns>
     public bool BoundaryCheck(int posX, int posY, int width, int height)
     {
-        if (PositionCheck(posX, posY) == false) return false;
+        if (PositionCheck(posX, posY) == false)
+        {
+            //Debug.Log("Boundary check FALSE");
+            return false;
+        }
 
         posX += width - 1;
         posY += height - 1;
 
-        if (PositionCheck(posX, posY) == false) return false;
+        if (PositionCheck(posX, posY) == false)
+        {
+            //Debug.Log("Boundary check FALSE");
+
+            return false;
+        }
+
+        //Debug.Log("Boundary check TRUE");
 
         return true;
     }

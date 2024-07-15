@@ -12,7 +12,7 @@ public class GridInteract : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     private void Awake()
     {
         inventoryController = FindObjectOfType(typeof(InventoryController)) as InventoryController; 
-        itemGrid = GetComponent<ItemGrid>();
+        itemGrid = GetComponent<ItemGrid>(); //vlt das hier
     }
 
     public void OnPointerEnter(PointerEventData eventData)
