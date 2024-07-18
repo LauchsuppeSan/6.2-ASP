@@ -7,6 +7,7 @@ public class InventoryController : MonoBehaviour
 {
     [HideInInspector]
     private ItemGrid selectedItemGrid; //public
+    private bool dropBoxFilled = false;
 
     InventoryItem selectedItem;
     InventoryItem overlapItem;
@@ -16,6 +17,7 @@ public class InventoryController : MonoBehaviour
     [SerializeField] List<ItemData> items;
     [SerializeField] GameObject itemPrefab;
     [SerializeField] Transform canvasTransform;
+    [SerializeField] ItemGrid dropBox;
 
     InventoryHighlight inventoryHighlight;
 
@@ -35,19 +37,20 @@ public class InventoryController : MonoBehaviour
     {
         inventoryHighlight = GetComponent<InventoryHighlight>();
     }
-
+   
     private void Update()
     {
         //Debug.Log(selectedItemGrid.GetTileGridPosition(Input.mousePosition));
 
         ItemIconDrag();
 
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            CreateRandomItem();
-        }
+        //if (Input.GetKeyDown(KeyCode.Q))
+        //{
+        //    CreateRandomItem();
+        //}
+        Debug.Log(dropBoxFilled);
 
-        if (Input.GetKeyDown(KeyCode.W))
+        if (!dropBoxFilled)
         {
             InsertRandomItem();
         }
@@ -80,12 +83,17 @@ public class InventoryController : MonoBehaviour
 
     private void InsertRandomItem()
     {
-        if (selectedItemGrid == null) return;
+        selectedItemGrid = dropBox;
+        //if (selectedItemGrid == null) return;
 
-        CreateRandomItem();
-        InventoryItem itemToInsert = selectedItem;
-        selectedItem = null;
-        InsertItem(itemToInsert);
+        for (int i = 0; i < 25; i++)
+        {
+            CreateRandomItem();
+            InventoryItem itemToInsert = selectedItem;
+            selectedItem = null;
+            InsertItem(itemToInsert);
+        }
+        dropBoxFilled = true;
     }
 
     private void InsertItem(InventoryItem itemToInsert)
@@ -188,11 +196,11 @@ public class InventoryController : MonoBehaviour
     {
         bool complete = selectedItemGrid.PlaceItem(selectedItem, tileGridPosition.x, tileGridPosition.y, ref overlapItem); //checks if item can be placed
 
-        Debug.Log("complete " + complete);
+        //Debug.Log("complete " + complete);
 
         if (!complete)
         {
-            Debug.Log("youre a tad closer");
+            //Debug.Log("youre a tad closer");
         }
         if (complete) //if item can be placed
         {
@@ -215,6 +223,7 @@ public class InventoryController : MonoBehaviour
         if (selectedItem != null)
         {
             rectTransform = selectedItem.GetComponent<RectTransform>();
+            rectTransform.SetParent(canvasTransform);
         }
     }
 

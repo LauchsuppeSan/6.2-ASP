@@ -1,10 +1,13 @@
 using System;
 using UnityEngine;
+using TMPro;
 
 public class ItemGrid : MonoBehaviour
 {
     public const float tileSizeWidth = 32;
     public const float tileSizeHeight = 32;
+    private bool availableSpace/* = true*/;
+    private bool allClear/* = true*/;
 
     InventoryItem[,] inventoryItemSlot;
 
@@ -12,6 +15,7 @@ public class ItemGrid : MonoBehaviour
 
     [SerializeField] int gridSizeWidth;
     [SerializeField] int gridSizeHeight;
+    [SerializeField] TMP_InputField iFWidth;
 
     //[SerializeField] GameObject inventoryItemPrefab;
 
@@ -20,13 +24,63 @@ public class ItemGrid : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
         Init(gridSizeWidth, gridSizeHeight);
 
+        //iFWidth = GetComponent<TMP_InputField>();
+
         //InventoryItem inventoryItem = Instantiate(inventoryItemPrefab).GetComponent<InventoryItem>();
         //PlaceItem(inventoryItem, 3, 2);
+    }
+    private void Update()
+    {
+        Debug.Log("available spac3 " + availableSpace);
+        Debug.Log("allClear " + allClear);
     }
 
     public void ChangeGridWidth(string input)
     {
-        if (Convert.ToInt32(input) <= 30 && Convert.ToInt32(input) >= 2)
+        if (Convert.ToInt32(input) < 2 || Convert.ToInt32(input) > 30)
+        {
+            //textfield
+        }
+        if (Convert.ToInt32(input) < gridSizeWidth && Convert.ToInt32(input) >= 2)
+        {
+            Debug.Log("ello");
+
+            //if (inventoryItemSlot == null || IsNullOrEmpty(inventoryItemSlot)
+            //{
+            //    gridSizeWidth = Convert.ToInt32(input);
+            //    InitChanged(gridSizeWidth, gridSizeHeight);
+            //}
+            //else if (inventoryItemSlot != null)
+            //{
+            //    Debug.Log("Awe man!");
+            //}
+            //availableSpace = true;
+            for (int x = 0; x < gridSizeWidth; x++)
+            {
+                for (int y = 0; y < gridSizeHeight; y++)
+                {
+                    if (inventoryItemSlot[x, y] != null)
+                    {
+                        Debug.Log("Check available space FALSE");
+                        iFWidth.text = Convert.ToString(gridSizeWidth);
+                        availableSpace = false;
+                        return;
+                    }
+                    //else
+                    //{
+                    //    availableSpace = true;
+                    //}
+                }
+            }
+            allClear = true;
+            if (!availableSpace && allClear)
+            {
+                //availableSpace = true;
+                gridSizeWidth = Convert.ToInt32(input);
+                InitChanged(gridSizeWidth, gridSizeHeight);
+            }
+        }
+        if (Convert.ToInt32(input) <= 30 && Convert.ToInt32(input) >= gridSizeWidth)
         {
             gridSizeWidth = Convert.ToInt32(input);
             InitChanged(gridSizeWidth, gridSizeHeight);
@@ -60,17 +114,17 @@ public class ItemGrid : MonoBehaviour
     /// <param name="height">new grid height</param>
     private void InitChanged(int width, int height)
     {
-        InventoryItem[,] tempItems = inventoryItemSlot;
+        //InventoryItem[,] tempItems = inventoryItemSlot;
 
-
-        if (tempItems.GetLength(1) > height || tempItems.GetLength(0) > width)
-        {
-            Debug.Log("FUCK YEAH!");
-            return;
-        }
+        //if (tempItems.GetLength(1) > height || tempItems.GetLength(0) > width)
+        //{
+        //    Debug.Log("FUCK YEAH!");
+        //    //return;
+        //}
 
         inventoryItemSlot = new InventoryItem[width, height];
-        Array.Copy(tempItems, 0, inventoryItemSlot, 0, tempItems.Length);
+        //Array.Copy(tempItems, 0, inventoryItemSlot, 0, tempItems.Length);
+
         Vector2 size = new Vector2(width * tileSizeWidth, height * tileSizeHeight);
         rectTransform.sizeDelta = size;
     }
@@ -98,7 +152,7 @@ public class ItemGrid : MonoBehaviour
     {
         if (BoundaryCheck(posX, posY, inventoryItem.WIDTH, inventoryItem.HEIGHT) == false) //Boundary check is true
         {
-            Debug.Log("Place item FALSE");
+            //Debug.Log("Place item FALSE");
             return false;
         }
         // if (BoundaryCheck(posX, posY, inventoryItem.WIDTH, inventoryItem.HEIGHT) == true)
@@ -109,14 +163,14 @@ public class ItemGrid : MonoBehaviour
 
         if (OverlapCheck(posX, posY, inventoryItem.WIDTH, inventoryItem.HEIGHT, ref overlapItem) == false)
         {
-            Debug.Log("place item FALSE");
+            //Debug.Log("place item FALSE");
             overlapItem = null;
 
             return false;
         }
         if (OverlapCheck(posX, posY, inventoryItem.WIDTH, inventoryItem.HEIGHT, ref overlapItem) == true)
         {
-            Debug.Log("Overlap check TRUE");
+            //Debug.Log("Overlap check TRUE");
 
         }
 
@@ -127,7 +181,7 @@ public class ItemGrid : MonoBehaviour
 
         PlaceItem(inventoryItem, posX, posY);
 
-        Debug.Log("Place Item TRUE");
+        //Debug.Log("Place Item TRUE");
         return true;
     }
 
@@ -189,26 +243,26 @@ public class ItemGrid : MonoBehaviour
             {
                 if (inventoryItemSlot[posX + x, posY + y] != null)
                 {
-                    Debug.Log("it aint null");
+                    //Debug.Log("it aint null");
                     if (overlapItem == null)
                     {
                         overlapItem = inventoryItemSlot[posX + x, posY + y]; //Overlapitem has been assigned to the item we are overlapping with
-                        Debug.Log("Overlap TRUE");
+                        //Debug.Log("Overlap TRUE");
                     }
                     else if (overlapItem != inventoryItemSlot[posX + x, posY + y])
                     {
-                        Debug.Log("Overlap FALSE");
+                        //Debug.Log("Overlap FALSE");
 
                         return false; //There is 2 items we are overlapping with so we cant place the item
                     }
                 }
                 else if (inventoryItemSlot[posX + x, posY + y] == null)
                 {
-                    Debug.Log("It do be null");
+                    //Debug.Log("It do be null");
                 }
             }
         }
-        Debug.Log("Nothing to overlap with");
+        //Debug.Log("Nothing to overlap with");
 
         return true;
     }
@@ -229,12 +283,12 @@ public class ItemGrid : MonoBehaviour
             {
                 if (inventoryItemSlot[posX + x, posY + y] != null)
                 {
-                    Debug.Log("Check available space FALSE");
+                    //Debug.Log("Check available space FALSE");
                     return false;
                 }
             }
         }
-        Debug.Log("Check available space TRUE");
+        //Debug.Log("Check available space TRUE");
 
         return true;
     }
